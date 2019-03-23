@@ -1,13 +1,13 @@
 import {
-  all, takeLatest, call, put, select
+  all, takeLatest, call, put, select,
 } from 'redux-saga/effects';
 
 import api from '~/services/api';
 
 import { navigate } from '~/services/navigation';
 
-import * as LoginActions from '~/store/actions/login';
-import * as RepositoriesActions from '~/store/actions/repositories';
+import { Creators as LoginActions, Types as loginTypes } from '~/store/ducks/login';
+import { Creators as RepositoriesActions, Types as RepositoriesTypes } from '~/store/ducks/repositories';
 
 function* login(action) {
   try {
@@ -36,7 +36,7 @@ function* loadRepositories() {
 }
 
 export default function* rootSaga() {
-  return yield all([takeLatest('LOGIN_REQUEST', login),
-    takeLatest('LOAD_REPOSITORIES_REQUEST', loadRepositories),
+  return yield all([takeLatest(loginTypes.REQUEST, login),
+    takeLatest(RepositoriesTypes.LOAD_REQUEST, loadRepositories),
   ]);
 }

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { ActivityIndicator, Text } from 'react-native';
 
-import * as repositoriesActions from '~/store/actions/repositories';
+import { Creators as repositoriesActions } from '~/store/ducks/repositories';
 import { Container } from './styles';
 
 // import styles from './styles';
